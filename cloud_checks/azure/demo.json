@@ -1,0 +1,395 @@
+{
+  "cloud": "azure",
+  "captured_at": "2026-10-01T12:00:00Z",
+  "account": {
+    "id": "aaaaaaaa-0000-4000-8000-000000000001, aaaaaaaa-0000-4000-8000-000000000002",
+    "name": "Contoso Production (demo), Contoso Dev (demo)"
+  },
+  "errors": {},
+  "data": {
+    "subscriptions": [
+      {
+        "id": "aaaaaaaa-0000-4000-8000-000000000001",
+        "name": "Contoso Production (demo)"
+      },
+      {
+        "id": "aaaaaaaa-0000-4000-8000-000000000002",
+        "name": "Contoso Dev (demo)"
+      }
+    ],
+    "storage_accounts": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001/resourceGroups/rg-data/providers/Microsoft.Storage/storageAccounts/contosoprodlogs",
+        "name": "contosoprodlogs",
+        "location": "eastus",
+        "allow_blob_public_access": false,
+        "https_only": true,
+        "minimum_tls": "TLS1_2",
+        "network_default_action": "Deny",
+        "public_network_access": "Enabled"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001/resourceGroups/rg-data/providers/Microsoft.Storage/storageAccounts/contosopublicweb",
+        "name": "contosopublicweb",
+        "location": "eastus",
+        "allow_blob_public_access": true,
+        "https_only": true,
+        "minimum_tls": "TLS1_2",
+        "network_default_action": "Allow",
+        "public_network_access": "Enabled"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-data/providers/Microsoft.Storage/storageAccounts/contosodevscratch",
+        "name": "contosodevscratch",
+        "location": "eastus",
+        "allow_blob_public_access": false,
+        "https_only": false,
+        "minimum_tls": "TLS1_0",
+        "network_default_action": "Allow",
+        "public_network_access": "Enabled"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-data/providers/Microsoft.Storage/storageAccounts/contosodevprivate",
+        "name": "contosodevprivate",
+        "location": "eastus",
+        "allow_blob_public_access": false,
+        "https_only": true,
+        "minimum_tls": "TLS1_2",
+        "network_default_action": "Allow",
+        "public_network_access": "Disabled"
+      }
+    ],
+    "network_security_groups": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001/resourceGroups/rg-net/providers/Microsoft.Network/networkSecurityGroups/nsg-web",
+        "name": "nsg-web",
+        "location": "eastus",
+        "attached": true,
+        "rules": [
+          {
+            "name": "allow-https",
+            "direction": "Inbound",
+            "access": "Allow",
+            "protocol": "Tcp",
+            "priority": 100,
+            "sources": [
+              "Internet"
+            ],
+            "ports": [
+              "443"
+            ]
+          },
+          {
+            "name": "deny-all",
+            "direction": "Inbound",
+            "access": "Deny",
+            "protocol": "*",
+            "priority": 4000,
+            "sources": [
+              "*"
+            ],
+            "ports": [
+              "*"
+            ]
+          }
+        ]
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001/resourceGroups/rg-net/providers/Microsoft.Network/networkSecurityGroups/nsg-mgmt",
+        "name": "nsg-mgmt",
+        "location": "eastus",
+        "attached": true,
+        "rules": [
+          {
+            "name": "allow-rdp",
+            "direction": "Inbound",
+            "access": "Allow",
+            "protocol": "Tcp",
+            "priority": 100,
+            "sources": [
+              "*"
+            ],
+            "ports": [
+              "3389"
+            ]
+          },
+          {
+            "name": "allow-ssh-office",
+            "direction": "Inbound",
+            "access": "Allow",
+            "protocol": "Tcp",
+            "priority": 110,
+            "sources": [
+              "198.51.100.0/24"
+            ],
+            "ports": [
+              "22"
+            ]
+          }
+        ]
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-net/providers/Microsoft.Network/networkSecurityGroups/nsg-dev-db",
+        "name": "nsg-dev-db",
+        "location": "eastus",
+        "attached": true,
+        "rules": [
+          {
+            "name": "allow-sql",
+            "direction": "Inbound",
+            "access": "Allow",
+            "protocol": "Tcp",
+            "priority": 100,
+            "sources": [
+              "0.0.0.0/0"
+            ],
+            "ports": [
+              "1433",
+              "5432"
+            ]
+          }
+        ]
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-net/providers/Microsoft.Network/networkSecurityGroups/nsg-dev-anything",
+        "name": "nsg-dev-anything",
+        "location": "eastus",
+        "attached": false,
+        "rules": [
+          {
+            "name": "allow-all",
+            "direction": "Inbound",
+            "access": "Allow",
+            "protocol": "*",
+            "priority": 100,
+            "sources": [
+              "Internet"
+            ],
+            "ports": [
+              "*"
+            ]
+          }
+        ]
+      }
+    ],
+    "sql_servers": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001/resourceGroups/rg-data/providers/Microsoft.Sql/servers/contoso-sql-prod",
+        "name": "contoso-sql-prod",
+        "location": "eastus",
+        "public_network_access": "Enabled",
+        "firewall_rules": [
+          {
+            "name": "AllowAllWindowsAzureIps",
+            "start": "0.0.0.0",
+            "end": "0.0.0.0"
+          },
+          {
+            "name": "office",
+            "start": "198.51.100.10",
+            "end": "198.51.100.10"
+          }
+        ]
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-data/providers/Microsoft.Sql/servers/contoso-sql-dev",
+        "name": "contoso-sql-dev",
+        "location": "eastus",
+        "public_network_access": "Enabled",
+        "firewall_rules": [
+          {
+            "name": "temp-allow-all",
+            "start": "0.0.0.0",
+            "end": "255.255.255.255"
+          }
+        ]
+      }
+    ],
+    "key_vaults": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "id": "kv1",
+        "name": "kv-contoso-prod",
+        "location": "eastus",
+        "soft_delete": true,
+        "purge_protection": true,
+        "public_network_access": "Enabled",
+        "network_default_action": "Deny"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "id": "kv2",
+        "name": "kv-contoso-dev",
+        "location": "eastus",
+        "soft_delete": true,
+        "purge_protection": null,
+        "public_network_access": "Enabled",
+        "network_default_action": "Allow"
+      }
+    ],
+    "defender_plans": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "VirtualMachines",
+        "tier": "Standard"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "StorageAccounts",
+        "tier": "Standard"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "SqlServers",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "KeyVaults",
+        "tier": "Standard"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "Arm",
+        "tier": "Standard"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "plan": "Containers",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "plan": "VirtualMachines",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "plan": "StorageAccounts",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "plan": "SqlServers",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "plan": "KeyVaults",
+        "tier": "Free"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "plan": "Arm",
+        "tier": "Free"
+      }
+    ],
+    "role_assignments": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "user-0",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "user-1",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "user-2",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "user-3",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "sp-deploy",
+        "principal_type": "ServicePrincipal",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "principal_id": "user-9",
+        "principal_type": "User",
+        "role_definition_id": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "principal_id": "user-0",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "principal_id": "user-1",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "principal_id": "user-2",
+        "principal_type": "User",
+        "role_definition_id": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+        "scope": "/subscriptions/aaaaaaaa-0000-4000-8000-000000000002/resourceGroups/rg-data"
+      }
+    ],
+    "custom_roles": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "name": "Contoso Super Operator",
+        "actions": [
+          "*"
+        ],
+        "assignable_scopes": [
+          "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+        ]
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "name": "VM Restarter",
+        "actions": [
+          "Microsoft.Compute/virtualMachines/restart/action"
+        ],
+        "assignable_scopes": [
+          "/subscriptions/aaaaaaaa-0000-4000-8000-000000000001"
+        ]
+      }
+    ],
+    "activity_log_settings": [
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000001",
+        "name": "to-sentinel"
+      },
+      {
+        "subscription": "aaaaaaaa-0000-4000-8000-000000000002",
+        "name": ""
+      }
+    ]
+  }
+}
