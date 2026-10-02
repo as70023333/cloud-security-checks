@@ -1,3 +1,25 @@
-*.pyc
-__pycache__/
+# Secrets and local settings
 .env
+.env.*
+!.env.example
+
+# Reports and snapshots (they describe your cloud accounts: resource names, findings)
+reports/
+*.snapshot.json
+snapshot*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store

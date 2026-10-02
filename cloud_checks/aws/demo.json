@@ -1,0 +1,460 @@
+{
+  "cloud": "aws",
+  "captured_at": "2026-10-01T12:00:00Z",
+  "account": {
+    "id": "111122223333",
+    "arn": "arn:aws:iam::111122223333:role/SecurityAudit",
+    "name": "contoso-prod (demo)"
+  },
+  "errors": {},
+  "data": {
+    "iam_summary": {
+      "AccountMFAEnabled": 0,
+      "AccountAccessKeysPresent": 0,
+      "Users": 5
+    },
+    "password_policy": {
+      "exists": true,
+      "minimum_length": 8,
+      "reuse_prevention": null,
+      "max_age_days": 90,
+      "require_symbols": true,
+      "require_numbers": true,
+      "require_uppercase": true,
+      "require_lowercase": true
+    },
+    "credential_report": [
+      {
+        "user": "<root_account>",
+        "arn": "arn:aws:iam::111122223333:root",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "not_supported",
+        "password_last_used": "2026-09-20T08:12:00+00:00",
+        "password_last_changed": "N/A",
+        "password_next_rotation": "N/A",
+        "mfa_active": "false",
+        "access_key_1_active": "false",
+        "access_key_1_last_rotated": "N/A",
+        "access_key_1_last_used_date": "N/A",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      },
+      {
+        "user": "alice",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "true",
+        "password_last_used": "2026-09-30T10:00:00+00:00",
+        "password_last_changed": "2026-06-01T00:00:00+00:00",
+        "password_next_rotation": "N/A",
+        "mfa_active": "true",
+        "access_key_1_active": "false",
+        "access_key_1_last_rotated": "N/A",
+        "access_key_1_last_used_date": "N/A",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      },
+      {
+        "user": "bob",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "true",
+        "password_last_used": "2026-09-29T10:00:00+00:00",
+        "password_last_changed": "2026-01-01T00:00:00+00:00",
+        "password_next_rotation": "N/A",
+        "mfa_active": "false",
+        "access_key_1_active": "false",
+        "access_key_1_last_rotated": "N/A",
+        "access_key_1_last_used_date": "N/A",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      },
+      {
+        "user": "ci-deploy",
+        "arn": "arn:aws:iam::111122223333:user/ci-deploy",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "false",
+        "password_last_used": "N/A",
+        "password_last_changed": "N/A",
+        "password_next_rotation": "N/A",
+        "mfa_active": "false",
+        "access_key_1_active": "true",
+        "access_key_1_last_rotated": "2025-02-01T00:00:00+00:00",
+        "access_key_1_last_used_date": "2026-09-30T23:00:00+00:00",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      },
+      {
+        "user": "old-contractor",
+        "arn": "arn:aws:iam::111122223333:user/old-contractor",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "true",
+        "password_last_used": "2026-03-01T00:00:00+00:00",
+        "password_last_changed": "2025-11-01T00:00:00+00:00",
+        "password_next_rotation": "N/A",
+        "mfa_active": "true",
+        "access_key_1_active": "true",
+        "access_key_1_last_rotated": "2026-01-15T00:00:00+00:00",
+        "access_key_1_last_used_date": "2026-02-20T00:00:00+00:00",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      },
+      {
+        "user": "svc-reports",
+        "arn": "arn:aws:iam::111122223333:user/svc-reports",
+        "user_creation_time": "2024-01-10T09:00:00+00:00",
+        "password_enabled": "false",
+        "password_last_used": "N/A",
+        "password_last_changed": "N/A",
+        "password_next_rotation": "N/A",
+        "mfa_active": "false",
+        "access_key_1_active": "true",
+        "access_key_1_last_rotated": "2026-08-15T00:00:00+00:00",
+        "access_key_1_last_used_date": "2026-09-30T00:00:00+00:00",
+        "access_key_2_active": "false",
+        "access_key_2_last_rotated": "N/A",
+        "access_key_2_last_used_date": "N/A"
+      }
+    ],
+    "customer_policies": [
+      {
+        "name": "LegacyFullAccess",
+        "arn": "arn:aws:iam::111122223333:policy/LegacyFullAccess",
+        "attachment_count": 2,
+        "document": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "*",
+              "Resource": "*"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ReportsReadOnly",
+        "arn": "arn:aws:iam::111122223333:policy/ReportsReadOnly",
+        "attachment_count": 1,
+        "document": {
+          "Version": "2012-10-17",
+          "Statement": {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:ListBucket"
+            ],
+            "Resource": "*"
+          }
+        }
+      }
+    ],
+    "admin_entities": {
+      "users": [
+        "bob"
+      ],
+      "groups": [
+        "Admins"
+      ],
+      "roles": [
+        "OrganizationAccountAccessRole"
+      ]
+    },
+    "s3_account_block": {
+      "configured": true,
+      "BlockPublicAcls": true,
+      "IgnorePublicAcls": false,
+      "BlockPublicPolicy": true,
+      "RestrictPublicBuckets": false
+    },
+    "s3_buckets": [
+      {
+        "name": "contoso-app-logs",
+        "region": "us-east-1",
+        "public_access_block": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "policy_public": false,
+        "public_acl_grants": [],
+        "tls_enforced": true,
+        "errors": {}
+      },
+      {
+        "name": "contoso-customer-exports",
+        "region": "us-east-1",
+        "public_access_block": {
+          "BlockPublicAcls": false,
+          "IgnorePublicAcls": false,
+          "BlockPublicPolicy": false,
+          "RestrictPublicBuckets": false
+        },
+        "policy_public": true,
+        "public_acl_grants": [],
+        "tls_enforced": false,
+        "errors": {}
+      },
+      {
+        "name": "contoso-marketing-assets",
+        "region": "eu-west-1",
+        "public_access_block": {
+          "BlockPublicAcls": false,
+          "IgnorePublicAcls": false,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "policy_public": false,
+        "public_acl_grants": [
+          "READ to everyone"
+        ],
+        "tls_enforced": false,
+        "errors": {}
+      },
+      {
+        "name": "contoso-old-site",
+        "region": "us-east-1",
+        "public_access_block": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "policy_public": true,
+        "public_acl_grants": [],
+        "tls_enforced": true,
+        "errors": {}
+      }
+    ],
+    "regions": [
+      "eu-west-1",
+      "us-east-1",
+      "us-west-2"
+    ],
+    "security_groups": [
+      {
+        "region": "us-east-1",
+        "id": "sg-0aaa111",
+        "name": "default",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "all",
+            "from_port": null,
+            "to_port": null,
+            "cidrs": []
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "us-east-1",
+        "id": "sg-0bbb222",
+        "name": "web",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "tcp",
+            "from_port": 443,
+            "to_port": 443,
+            "cidrs": [
+              "0.0.0.0/0",
+              "::/0"
+            ]
+          },
+          {
+            "protocol": "tcp",
+            "from_port": 80,
+            "to_port": 80,
+            "cidrs": [
+              "0.0.0.0/0"
+            ]
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "us-east-1",
+        "id": "sg-0ccc333",
+        "name": "bastion",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "tcp",
+            "from_port": 22,
+            "to_port": 22,
+            "cidrs": [
+              "0.0.0.0/0"
+            ]
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "us-east-1",
+        "id": "sg-0ddd444",
+        "name": "legacy-db",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "tcp",
+            "from_port": 3306,
+            "to_port": 3306,
+            "cidrs": [
+              "0.0.0.0/0"
+            ]
+          },
+          {
+            "protocol": "tcp",
+            "from_port": 3389,
+            "to_port": 3389,
+            "cidrs": [
+              "::/0"
+            ]
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "eu-west-1",
+        "id": "sg-0eee555",
+        "name": "test-anything",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "all",
+            "from_port": null,
+            "to_port": null,
+            "cidrs": [
+              "0.0.0.0/0"
+            ]
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "eu-west-1",
+        "id": "sg-0fff666",
+        "name": "internal",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [
+          {
+            "protocol": "tcp",
+            "from_port": 5432,
+            "to_port": 5432,
+            "cidrs": [
+              "10.0.0.0/8"
+            ]
+          }
+        ],
+        "egress_rule_count": 1
+      },
+      {
+        "region": "us-west-2",
+        "id": "sg-0abc777",
+        "name": "default",
+        "vpc_id": "vpc-0a1b2c3d",
+        "ingress": [],
+        "egress_rule_count": 0
+      }
+    ],
+    "ebs_default_encryption": {
+      "eu-west-1": false,
+      "us-east-1": true,
+      "us-west-2": false
+    },
+    "public_snapshots": [
+      {
+        "region": "us-east-1",
+        "id": "snap-0123456789abcdef0",
+        "size_gb": 200,
+        "encrypted": false,
+        "description": "db backup before migration"
+      }
+    ],
+    "public_images": [
+      {
+        "region": "eu-west-1",
+        "id": "ami-0fedcba9876543210",
+        "name": "contoso-base-2023"
+      }
+    ],
+    "instances": [
+      {
+        "region": "us-east-1",
+        "id": "i-0aaa1111bbbb2222c",
+        "name": "web-01",
+        "state": "running",
+        "public_ip": "203.0.113.20",
+        "http_tokens": "optional",
+        "http_endpoint": "enabled"
+      },
+      {
+        "region": "us-east-1",
+        "id": "i-0ddd3333eeee4444f",
+        "name": "app-01",
+        "state": "running",
+        "public_ip": "",
+        "http_tokens": "required",
+        "http_endpoint": "enabled"
+      },
+      {
+        "region": "eu-west-1",
+        "id": "i-0abc5555def66667a",
+        "name": "batch-worker",
+        "state": "stopped",
+        "public_ip": "",
+        "http_tokens": "optional",
+        "http_endpoint": "enabled"
+      }
+    ],
+    "trails": [
+      {
+        "name": "management-events",
+        "arn": "arn:aws:cloudtrail:us-east-1:111122223333:trail/management-events",
+        "home_region": "us-east-1",
+        "multi_region": false,
+        "log_validation": false,
+        "kms_key_id": "",
+        "organization_trail": false,
+        "is_logging": true
+      }
+    ],
+    "rds_instances": [
+      {
+        "region": "us-east-1",
+        "id": "orders-prod",
+        "engine": "postgres",
+        "public": false,
+        "encrypted": true
+      },
+      {
+        "region": "us-east-1",
+        "id": "legacy-reporting",
+        "engine": "mysql",
+        "public": true,
+        "encrypted": false
+      }
+    ],
+    "guardduty": {
+      "regions_checked": [
+        "eu-west-1",
+        "us-east-1",
+        "us-west-2"
+      ],
+      "detectors": [
+        {
+          "region": "us-east-1",
+          "id": "12abc34d567e8fa901bc2d34e56789f0",
+          "status": "ENABLED"
+        }
+      ]
+    }
+  }
+}

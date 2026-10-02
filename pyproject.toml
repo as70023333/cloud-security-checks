@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloud-security-checks"
+version = "1.0.0"
+description = "Read-only misconfiguration scanners for AWS, Azure and Google Cloud: 54 checks, no SDKs, no dependencies."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Alex S., Security" }]
+keywords = ["security", "cloud-security", "aws", "azure", "gcp", "cspm", "misconfiguration", "cis-benchmark"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/as70023333/cloud-security-checks"
+Issues = "https://github.com/as70023333/cloud-security-checks/issues"
+
+[project.scripts]
+cloud-checks = "cloud_checks.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["cloud_checks*"]
+
+[tool.setuptools.package-data]
+"cloud_checks.aws" = ["demo.json"]
+"cloud_checks.azure" = ["demo.json"]
+"cloud_checks.gcp" = ["demo.json"]

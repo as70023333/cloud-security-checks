@@ -1,0 +1,360 @@
+{
+  "cloud": "gcp",
+  "captured_at": "2026-10-01T12:00:00Z",
+  "account": {
+    "id": "contoso-prod-demo, contoso-dev-demo",
+    "name": "contoso-prod-demo, contoso-dev-demo"
+  },
+  "errors": {},
+  "data": {
+    "projects": [
+      {
+        "id": "contoso-prod-demo",
+        "name": "Contoso Prod (demo)",
+        "number": "100000000001"
+      },
+      {
+        "id": "contoso-dev-demo",
+        "name": "Contoso Dev (demo)",
+        "number": "100000000002"
+      }
+    ],
+    "iam_bindings": [
+      {
+        "project": "contoso-prod-demo",
+        "role": "roles/owner",
+        "members": [
+          "user:admin@contoso.example",
+          "group:cloud-admins@contoso.example"
+        ],
+        "conditional": false
+      },
+      {
+        "project": "contoso-prod-demo",
+        "role": "roles/editor",
+        "members": [
+          "serviceAccount:100000000001-compute@developer.gserviceaccount.com",
+          "serviceAccount:100000000001@cloudservices.gserviceaccount.com",
+          "serviceAccount:deployer@contoso-prod-demo.iam.gserviceaccount.com"
+        ],
+        "conditional": false
+      },
+      {
+        "project": "contoso-prod-demo",
+        "role": "roles/viewer",
+        "members": [
+          "user:freelancer.jane@gmail.com"
+        ],
+        "conditional": false
+      },
+      {
+        "project": "contoso-dev-demo",
+        "role": "roles/owner",
+        "members": [
+          "user:dev.lead@gmail.com",
+          "user:admin@contoso.example"
+        ],
+        "conditional": false
+      },
+      {
+        "project": "contoso-dev-demo",
+        "role": "roles/storage.objectViewer",
+        "members": [
+          "allUsers"
+        ],
+        "conditional": false
+      },
+      {
+        "project": "contoso-dev-demo",
+        "role": "roles/compute.serviceAgent",
+        "members": [
+          "serviceAccount:service-100000000002@compute-system.iam.gserviceaccount.com"
+        ],
+        "conditional": false
+      }
+    ],
+    "service_account_keys": [
+      {
+        "project": "contoso-prod-demo",
+        "email": "deployer@contoso-prod-demo.iam.gserviceaccount.com",
+        "key_id": "3f9a1c2e4b5d6f708192a3b4c5d6e7f8091a2b3c",
+        "created": "2025-03-10T09:00:00Z",
+        "disabled": false
+      },
+      {
+        "project": "contoso-dev-demo",
+        "email": "ci@contoso-dev-demo.iam.gserviceaccount.com",
+        "key_id": "a1b2c3d4e5f60718293a4b5c6d7e8f9001122334",
+        "created": "2026-09-01T09:00:00Z",
+        "disabled": false
+      },
+      {
+        "project": "contoso-dev-demo",
+        "email": "old@contoso-dev-demo.iam.gserviceaccount.com",
+        "key_id": "0f1e2d3c4b5a69788796a5b4c3d2e1f001234567",
+        "created": "2024-01-01T00:00:00Z",
+        "disabled": true
+      }
+    ],
+    "buckets": [
+      {
+        "project": "contoso-prod-demo",
+        "name": "contoso-prod-backups",
+        "location": "US",
+        "public_access_prevention": "enforced",
+        "uniform_access": true,
+        "public_bindings": []
+      },
+      {
+        "project": "contoso-prod-demo",
+        "name": "contoso-prod-static",
+        "location": "US",
+        "public_access_prevention": "inherited",
+        "uniform_access": true,
+        "public_bindings": [
+          {
+            "role": "roles/storage.objectViewer",
+            "member": "allUsers"
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "contoso-dev-uploads",
+        "location": "EUROPE-WEST1",
+        "public_access_prevention": "inherited",
+        "uniform_access": false,
+        "public_bindings": []
+      }
+    ],
+    "firewalls": [
+      {
+        "project": "contoso-prod-demo",
+        "name": "allow-https",
+        "network": "prod-vpc",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "tcp",
+            "ports": [
+              "443"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-prod-demo",
+        "name": "allow-internal",
+        "network": "prod-vpc",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "10.128.0.0/9"
+        ],
+        "allowed": [
+          {
+            "protocol": "tcp",
+            "ports": [
+              "0-65535"
+            ]
+          },
+          {
+            "protocol": "udp",
+            "ports": [
+              "0-65535"
+            ]
+          },
+          {
+            "protocol": "icmp",
+            "ports": []
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "default-allow-ssh",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "tcp",
+            "ports": [
+              "22"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "default-allow-rdp",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "tcp",
+            "ports": [
+              "3389"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "default-allow-icmp",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "icmp",
+            "ports": []
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "dev-redis",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "tcp",
+            "ports": [
+              "6379",
+              "9200-9300"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "temp-open",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": false,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "all",
+            "ports": []
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "old-open-disabled",
+        "network": "default",
+        "direction": "INGRESS",
+        "disabled": true,
+        "source_ranges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "protocol": "all",
+            "ports": []
+          }
+        ]
+      }
+    ],
+    "instances": [
+      {
+        "project": "contoso-prod-demo",
+        "zone": "us-central1-a",
+        "name": "prod-api-1",
+        "status": "RUNNING",
+        "public_ips": [],
+        "service_accounts": [
+          {
+            "email": "api@contoso-prod-demo.iam.gserviceaccount.com",
+            "scopes": [
+              "https://www.googleapis.com/auth/cloud-platform"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "zone": "europe-west1-b",
+        "name": "dev-box",
+        "status": "RUNNING",
+        "public_ips": [
+          "203.0.113.77"
+        ],
+        "service_accounts": [
+          {
+            "email": "100000000002-compute@developer.gserviceaccount.com",
+            "scopes": [
+              "https://www.googleapis.com/auth/cloud-platform"
+            ]
+          }
+        ]
+      },
+      {
+        "project": "contoso-dev-demo",
+        "zone": "europe-west1-b",
+        "name": "dev-batch",
+        "status": "TERMINATED",
+        "public_ips": [],
+        "service_accounts": [
+          {
+            "email": "100000000002-compute@developer.gserviceaccount.com",
+            "scopes": [
+              "https://www.googleapis.com/auth/devstorage.read_only",
+              "https://www.googleapis.com/auth/logging.write"
+            ]
+          }
+        ]
+      }
+    ],
+    "sql_instances": [
+      {
+        "project": "contoso-prod-demo",
+        "name": "orders-prod",
+        "version": "POSTGRES_16",
+        "region": "us-central1",
+        "instance_type": "CLOUD_SQL_INSTANCE",
+        "public_ip": false,
+        "authorized_networks": [],
+        "require_ssl": false,
+        "ssl_mode": "ENCRYPTED_ONLY",
+        "backups": true
+      },
+      {
+        "project": "contoso-dev-demo",
+        "name": "dev-mysql",
+        "version": "MYSQL_8_0",
+        "region": "europe-west1",
+        "instance_type": "CLOUD_SQL_INSTANCE",
+        "public_ip": true,
+        "authorized_networks": [
+          "0.0.0.0/0"
+        ],
+        "require_ssl": false,
+        "ssl_mode": "ALLOW_UNENCRYPTED_AND_ENCRYPTED",
+        "backups": false
+      }
+    ]
+  }
+}
