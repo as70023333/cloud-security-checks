@@ -59,9 +59,9 @@ Every check ends in one of three states:
 
 | State | Meaning |
 |---|---|
-| ✅ **PASS** | The data was read and nothing failed |
-| ❌ **FAIL** | One finding per failing resource, each with a severity |
-| ⚪ **SKIPPED** | The data could not be read (missing permission, API error). The report says why. |
+| **PASS** | The data was read and nothing failed |
+| **FAIL** | One finding per failing resource, each with a severity |
+| **SKIPPED** | The data could not be read (missing permission, API error). The report says why. |
 
 A skipped check is never reported as a pass. If your role cannot read RDS, the RDS checks say so
 under **Coverage notes** instead of quietly showing green.
