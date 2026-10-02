@@ -226,7 +226,7 @@ cloud-security-checks/
 ├── docs/
 │   ├── CHECKS.md        # generated catalog of all 54 checks
 │   └── permissions.md   # least-privilege access for each cloud
-├── tests/               # 77 tests: signing vectors, fake AWS / Azure / Google Cloud APIs, every check
+├── tests/               # 78 tests: signing vectors, fake AWS / Azure / Google Cloud APIs, every check
 └── .github/workflows/ci.yml
 ```
 

@@ -59,10 +59,11 @@ def _cell(value: Any) -> str:
     if value is None:
         return ""
     if isinstance(value, (list, tuple, set)):
-        return "; ".join(str(v) for v in value)
-    if isinstance(value, dict):
-        return json.dumps(value, default=_json_default, ensure_ascii=False)
-    text = str(value)
+        text = "; ".join(str(v) for v in value)  # checked below like any other text
+    elif isinstance(value, dict):
+        text = json.dumps(value, default=_json_default, ensure_ascii=False)
+    else:
+        text = str(value)
     # Neutralise spreadsheet formula injection: attacker-controlled names end up in these files.
     if text[:1] in ("=", "+", "-", "@", "\t", "\r"):
         text = "'" + text

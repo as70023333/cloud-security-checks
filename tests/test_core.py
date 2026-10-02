@@ -1,3 +1,4 @@
+import csv
 import os
 import tempfile
 import time
@@ -149,6 +150,17 @@ class SmallHelpersTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertIn("'=cmd", text)
             self.assertIn("x; y", text)
+
+    def test_csv_neutralises_formula_injection_in_list_cells(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "x.csv"
+            write_csv(path, [{"a": ["=HYPERLINK(\"http://x.example\")", "y"], "b": ("+1", "2"), "c": {"k": "=1"}}],
+                      ["a", "b", "c"])
+            with path.open(newline="", encoding="utf-8") as handle:
+                row = list(csv.DictReader(handle))[0]
+            self.assertEqual(row["a"], "'=HYPERLINK(\"http://x.example\"); y")
+            self.assertEqual(row["b"], "'+1; 2")
+            self.assertEqual(row["c"], '{"k": "=1"}')  # JSON text starts with a brace: not a formula
 
     def test_markdown_table_escapes_pipes_and_newlines(self):
         table = md_table(["h"], [["a|b\nc"]])
